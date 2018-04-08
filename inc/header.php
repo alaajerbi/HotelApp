@@ -22,7 +22,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Reservations <img class="nav-img" src="./images/reservations.png"/></a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Customers <img class="nav-img" src="./images/customers.png"/></a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Suppliers <img class="nav-img" src="./images/supplies.png"/></a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Supplies <img class="nav-img" src="./images/supplies.png"/></a></li>
 
             </ul>
         </div>
