@@ -1,5 +1,5 @@
 body {
-    text-align: center;
+
 }
 
 .nav-img {
@@ -7,4 +7,12 @@ body {
     height: 30px;
     position: relative;
     top: -3px;
+}
+
+.user-img {
+    max-height: 100px;
+    max-width: 100px;
+    position: relative;
+    top: -40px;
+    border-radius: 50%;
 }
