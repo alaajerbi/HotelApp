@@ -1,44 +1,13 @@
 <?php
-    $pageTitle = "Hotel App - Dashboard";
-    include('inc/header.php'); ?>
+/**
+ * Created by PhpStorm.
+ * User: alaa
+ * Date: 4/12/18
+ * Time: 9:53 PM
+ */
 
-    <div class="jumbotron">
-        <img class="rounded float-right user-img" src="images/agent.png">
-        <h3><b>Hello,</b> Alaa Jerbi!</h3>
-    </div>
-    <div class="row">
-        
-        <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="card" style="width: 18rem;">
-                <a href="#"><img class="card-img-top" src="images/reservations-card.jpeg" alt="Card image cap"></a>
-                <div class="card-body">
-                    <h5 class="card-title">Manage Reservations</h5>
-                    <p class="card-text">View, edit, and start the check-out process on the current reservations.</p>
-                    <a href="#" class="btn btn-primary btn-block">Go</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="card" style="width: 18rem;">
-                <a href="#"><img class="card-img-top" src="images/customers-card.jpg" alt="Card image cap"></a>
-                <div class="card-body">
-                    <h5 class="card-title">Manage Customers</h5>
-                    <p class="card-text">View and edit our customers' information.</p>
-                    <a href="#" class="btn btn-primary btn-block">Go</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="card" style="width: 18rem;">
-                <a href="#"><img class="card-img-top" src="..." alt="Card image cap"></a>
-                <div class="card-body">
-                    <h5 class="card-title">Manage Supplies</h5>
-                    <p class="card-text"></p>
-                    <a href="#" class="btn btn-primary btn-block">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
-    include('inc/footer.php');
-?>
+if (!isset($_SESSION['id'])) {
+    header('Location: login.php');
+} else {
+    header('Location: dashboard.php');
+}
