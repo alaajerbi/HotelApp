@@ -116,18 +116,17 @@ INSERT INTO `consommation` (`num_consommable`, `date_consommation`, `qte`, `tota
 CREATE TABLE `facture` (
   `num_facture` varchar(10) NOT NULL,
   `num_reservation` varchar(10) NOT NULL,
-  `cin_receptionniste` int(8) NOT NULL,
   `cin` varchar(8) NOT NULL,
   `date_facture` varchar(10) NOT NULL,
   `etat` enum('Payé','Non Payé') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `facture`
 --
 
-INSERT INTO `facture` (`num_facture`, `num_reservation`, `cin_receptionniste`, `cin`, `date_facture`, `etat`) VALUES
-('0789109', '85', 7886789, '08867888', '24-04-2017', 'Payé');
+INSERT INTO `facture` (`num_facture`, `num_reservation`, `cin`, `date_facture`, `etat`) VALUES
+('0789109', '85', '08867888', '24-04-2017', 'Payé');
 
 -- --------------------------------------------------------
 
