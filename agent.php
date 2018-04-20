@@ -50,7 +50,7 @@
         var ps=document.getElementById('motdepasse').value;
         $.ajax({
             type: "POST",
-            url: "authentifiertest.php",
+            url: "authentifier_test.php",
             data: {name:nom,password:ps},
             success: function(data) {
 
