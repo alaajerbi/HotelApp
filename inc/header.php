@@ -1,7 +1,7 @@
 <?php
     
     //Check if the user is not logged in and redirect him to the login page.
-    if (!isset($_SESSION['id'])){
+    if (!isset($_SESSION['login'])){
         header('Location:login.php');
     }
 ?>
