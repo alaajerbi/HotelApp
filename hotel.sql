@@ -135,7 +135,7 @@ INSERT INTO `facture` (`num_facture`, `num_reservation`, `cin`, `date_facture`, 
 --
 
 CREATE TABLE `receptionniste` (
-  `cin` int(10) NOT NULL,
+
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `age` int(3) NOT NULL,
