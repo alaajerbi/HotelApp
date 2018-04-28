@@ -18,7 +18,7 @@ $qt = $_POST['qt'];
 $req = $db->query("SELECT * FROM chambre ch WHERE ch.num_chambre=$nc ;");
 
 if ($req->rowCount()==0) {
-    echo "Numéro de chambre erroné !!!";
+    echo "<font color='red' size='18'><center>Numéro de chambre erroné !!!</center></font>";
     die();
 } else {
     $req= $db->query("SELECT num_consommable,prix FROM consommable c WHERE c.libelle='$lb' ;");
