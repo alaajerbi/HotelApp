@@ -1,6 +1,20 @@
 <?php
     $pageTitle = "Hotel App - Dashboard";
-    include('inc/header.php'); ?>
+    include('inc/header.php');
+    
+    
+    $id = $_SESSION['login'];
+    
+    $db= new PDO("mysql:host=localhost;dbname=hotel", "root", "");
+    $sql = "SELECT * FROM receptionniste WHERE login=?";
+    
+    $results = $db->prepare($sql);
+    $results->bindValue($id, PDO::PARAM_INT);
+    $results->execute();
+    
+    $info = $results->fetchAll();
+    
+    ?>
     
     <div class="jumbotron">
         <img class="rounded float-right user-img" src="images/agent.png">

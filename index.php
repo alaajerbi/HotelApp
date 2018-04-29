@@ -6,8 +6,10 @@
  * Time: 9:53 PM
  */
 
-if (!isset($_SESSION['id'])) {
-    header('Location: login.php');
-} else {
+if (isset($_SESSION['id'])) {
+    //If the user is already logged in, redirect him to the dashboard.
     header('Location: dashboard.php');
+} else {
+    //Else, redirect him to the login page.
+    header('Location: login.php');
 }
