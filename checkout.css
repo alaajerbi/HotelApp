@@ -1,0 +1,78 @@
+body,footer
+{
+}
+h2
+{
+margin-left: 180px;
+}
+#cons
+{
+    width: 70%;
+    margin:auto;
+}
+h1
+{
+    text-align: center;
+    margin: auto;
+    color: crimson;
+}
+
+#info
+{
+    margin-left: 130px;
+}
+
+body,h2,h1,h3,footer
+{
+    margin:auto;
+    width: 60%;
+    font-family: 'Comic Sans MS', fantasy;
+
+}
+#apayer
+{
+    margin:auto;
+    width: 60%;
+}
+table
+{
+    border: dodgerblue solid 2px;
+    border-radius: 10px ;
+}
+tr,td,th
+  {
+      border: dodgerblue solid 2px;
+      border-radius: 5px ;
+  }
+
+th {
+    border: dodgerblue solid 2px;
+    border-radius: 5px;
+    color: coral;
+}
+#tot
+{
+margin-left: 0px;
+}
+em
+{
+    margin-left: 40px;
+}
+
+#date
+{
+    margin-left: 500px;
+}
+body
+{
+    border: dodgerblue 6px double;
+    border-radius: 10px;
+    background-image: url("images/a.jpg");
+}
+
+a
+{
+    margin-left: 500px;
+
+}
+
