@@ -5,14 +5,20 @@
     
     $id = $_SESSION['login'];
     
-    $db= new PDO("mysql:host=localhost;dbname=hotel", "root", "");
-    $sql = "SELECT * FROM receptionniste WHERE login=?";
+    try {
+        $db= new PDO("mysql:host=localhost;dbname=hotel", "root", "");
     
-    $results = $db->prepare($sql);
-    $results->bindValue($id, PDO::PARAM_INT);
-    $results->execute();
+        $sql = "SELECT * FROM receptionniste WHERE login=?";
     
-    $info = $results->fetchAll();
+        $results = $db->prepare($sql);
+        $results->bindValue($id, PDO::PARAM_INT);
+        $results->execute();
+    
+        $info = $results->fetchAll();
+    }
+    catch (PDOException $e){
+        die($e->getMessage());
+    }
     
     ?>
     
