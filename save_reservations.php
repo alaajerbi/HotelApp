@@ -10,7 +10,7 @@ $ps=$pdo->prepare("INSERT INTO reservations(nom,prenom,check_in,check_out,num_ch
 $params=array($nom,$prenom,$check_in,$check_out,$num_chambre) ;
 $ps->execute($params) ;
 header("location:affiche_reservation.php") ;
-$ps=$p
+$ps=$p ;
 
 
 
