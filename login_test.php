@@ -7,7 +7,7 @@
  */require_once ("conn.php") ;
 if (isset($_POST['name'])&&isset($_POST['password']))
 {
-    $login = $_POST["name"] ;
+    $login = $_POST["name "] ;
     $pass = $_POST["password"] ;
 
     $ps= $pdo->prepare("SELECT * FROM agent WHERE name=? AND password=? ") ;
