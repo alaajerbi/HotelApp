@@ -1,34 +1,39 @@
 #b {
     position: fixed;
-    background-image: url("background-pattern.gif");
+    background-image: url("img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-left: 40%;
     margin-right: 40%;
     margin-top: 10%;
     margin-bottom: 10%;
 }
 
-#lb{
+#formsection{
+    
+    border-radius: 15%;
+    background-color: rgba(0,0,0,0.5);
+    padding-bottom:10px; 
+
+}
+
+#lb {
     margin-left: 105px;
     margin-right: 60%;
 }
 
-#i2,#i1 {
+#i2,
+#i1 {
     margin-left: 70px;
     margin-right: 60%;
-    
 }
 
-h1 {
-    font-family: Consolas;
-    font-size: 40px;
-    color: maroon;
-}
 
 #l1,
 #l2,
 #l3 {
+
     font-family: monospace;
     font-size: 20px;
     color: maroon;
 }
-

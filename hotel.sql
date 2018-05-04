@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 20, 2018 at 07:56 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 03, 2018 at 05:07 PM
+-- Server version: 5.7.21
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,11 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `chambre`
 --
 
-CREATE TABLE `chambre` (
+DROP TABLE IF EXISTS `chambre`;
+CREATE TABLE IF NOT EXISTS `chambre` (
   `num_chambre` varchar(10) NOT NULL,
   `vue` varchar(20) NOT NULL,
   `prix_nuit` double NOT NULL,
-  `nb_lits` int(1) NOT NULL
+  `nb_lits` int(1) NOT NULL,
+  PRIMARY KEY (`num_chambre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -49,11 +51,13 @@ INSERT INTO `chambre` (`num_chambre`, `vue`, `prix_nuit`, `nb_lits`) VALUES
 -- Table structure for table `client`
 --
 
-CREATE TABLE `client` (
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
   `cin` varchar(8) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `metier` varchar(30) NOT NULL,
-  `etat_civil` varchar(10) NOT NULL
+  `etat_civil` varchar(10) NOT NULL,
+  PRIMARY KEY (`cin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -70,11 +74,14 @@ INSERT INTO `client` (`cin`, `nom`, `metier`, `etat_civil`) VALUES
 -- Table structure for table `consommable`
 --
 
-CREATE TABLE `consommable` (
+DROP TABLE IF EXISTS `consommable`;
+CREATE TABLE IF NOT EXISTS `consommable` (
   `num_consommable` varchar(12) NOT NULL,
   `libelle` varchar(20) NOT NULL,
   `decription` varchar(20) NOT NULL,
-  `prix` float NOT NULL
+  `prix` float NOT NULL,
+  PRIMARY KEY (`num_consommable`),
+  UNIQUE KEY `libelle` (`libelle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -91,21 +98,28 @@ INSERT INTO `consommable` (`num_consommable`, `libelle`, `decription`, `prix`) V
 -- Table structure for table `consommation`
 --
 
-CREATE TABLE `consommation` (
+DROP TABLE IF EXISTS `consommation`;
+CREATE TABLE IF NOT EXISTS `consommation` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `num_consommable` varchar(12) NOT NULL,
   `date_consommation` varchar(10) NOT NULL,
   `qte` int(11) NOT NULL,
   `total` double NOT NULL,
-  `num_chambre` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `num_chambre` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `num_chambre` (`num_chambre`),
+  KEY `consommation_ibfk_1` (`num_consommable`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `consommation`
 --
 
-INSERT INTO `consommation` (`num_consommable`, `date_consommation`, `qte`, `total`, `num_chambre`) VALUES
-('0698787910', '21-04-2017', 2, 4, '45'),
-('0786971213', '21-05-2017', 3, 9, '25');
+INSERT INTO `consommation` (`id`, `num_consommable`, `date_consommation`, `qte`, `total`, `num_chambre`) VALUES
+(1, '0698787910', '21-04-2017', 2, 4, '45'),
+(2, '0786971213', '21-05-2017', 3, 9, '25'),
+(6, '0786971213', '21-04-2018', 3, 9, '45'),
+(8, '0786971213', '21-04-2018', 2, 6, '25');
 
 -- --------------------------------------------------------
 
@@ -113,20 +127,26 @@ INSERT INTO `consommation` (`num_consommable`, `date_consommation`, `qte`, `tota
 -- Table structure for table `facture`
 --
 
-CREATE TABLE `facture` (
+DROP TABLE IF EXISTS `facture`;
+CREATE TABLE IF NOT EXISTS `facture` (
   `num_facture` varchar(10) NOT NULL,
   `num_reservation` varchar(10) NOT NULL,
+  `cin_receptionniste` int(8) NOT NULL,
   `cin` varchar(8) NOT NULL,
   `date_facture` varchar(10) NOT NULL,
-  `etat` enum('Payé','Non Payé') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4_general_ci;
+  `etat` enum('Payé','Non Payé') NOT NULL,
+  PRIMARY KEY (`num_facture`),
+  KEY `cin` (`cin`),
+  KEY `num_reservation` (`num_reservation`),
+  KEY `cin_receptionniste` (`cin_receptionniste`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facture`
 --
 
-INSERT INTO `facture` (`num_facture`, `num_reservation`, `cin`, `date_facture`, `etat`) VALUES
-('0789109', '85', '08867888', '24-04-2017', 'Payé');
+INSERT INTO `facture` (`num_facture`, `num_reservation`, `cin_receptionniste`, `cin`, `date_facture`, `etat`) VALUES
+('0789109', '85', 7886789, '08867888', '24-04-2017', 'Payé');
 
 -- --------------------------------------------------------
 
@@ -134,21 +154,24 @@ INSERT INTO `facture` (`num_facture`, `num_reservation`, `cin`, `date_facture`, 
 -- Table structure for table `receptionniste`
 --
 
-CREATE TABLE `receptionniste` (
-
+DROP TABLE IF EXISTS `receptionniste`;
+CREATE TABLE IF NOT EXISTS `receptionniste` (
+  `cin` int(8) NOT NULL,
+  `photo` varchar(50) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `age` int(3) NOT NULL,
   `login` varchar(20) NOT NULL,
-  `pwd` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `pwd` varchar(20) NOT NULL,
+  PRIMARY KEY (`login`,`cin`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `receptionniste`
 --
 
-INSERT INTO `receptionniste` (`cin`, `nom`, `prenom`, `age`, `login`, `pwd`) VALUES
-(7886789, 'Hadouaj', 'Sami', 20, 'Sami87', 'Sami8710');
+INSERT INTO `receptionniste` (`cin`, `photo`, `nom`, `prenom`, `age`, `login`, `pwd`) VALUES
+(7886789, '', 'Hadouaj', 'Sami', 20, 'Sami87', 'Sami8710');
 
 -- --------------------------------------------------------
 
@@ -156,7 +179,8 @@ INSERT INTO `receptionniste` (`cin`, `nom`, `prenom`, `age`, `login`, `pwd`) VAL
 -- Table structure for table `reservation`
 --
 
-CREATE TABLE `reservation` (
+DROP TABLE IF EXISTS `reservation`;
+CREATE TABLE IF NOT EXISTS `reservation` (
   `num_reservation` varchar(10) NOT NULL,
   `num_chambre` varchar(10) NOT NULL,
   `etat` enum('Active','Finie') NOT NULL,
@@ -164,7 +188,10 @@ CREATE TABLE `reservation` (
   `offre` varchar(20) NOT NULL,
   `option_supp` varchar(15) NOT NULL,
   `date_deb` varchar(10) NOT NULL,
-  `date_fin` varchar(10) NOT NULL
+  `date_fin` varchar(10) NOT NULL,
+  PRIMARY KEY (`num_reservation`),
+  KEY `num_chambre` (`num_chambre`),
+  KEY `cin` (`cin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -174,59 +201,6 @@ CREATE TABLE `reservation` (
 INSERT INTO `reservation` (`num_reservation`, `num_chambre`, `etat`, `cin`, `offre`, `option_supp`, `date_deb`, `date_fin`) VALUES
 ('67', '45', 'Finie', '08867888', 'Demi-pension', 'Aucune', '20-04-2017', '24-04-2017'),
 ('85', '25', 'Active', '04287876', 'Pension Complète', 'Cabine ', '20-05-2017', '31-05-2017');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `chambre`
---
-ALTER TABLE `chambre`
-  ADD PRIMARY KEY (`num_chambre`);
-
---
--- Indexes for table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`cin`);
-
---
--- Indexes for table `consommable`
---
-ALTER TABLE `consommable`
-  ADD PRIMARY KEY (`num_consommable`),
-  ADD UNIQUE KEY `libelle` (`libelle`);
-
---
--- Indexes for table `consommation`
---
-ALTER TABLE `consommation`
-  ADD PRIMARY KEY (`num_consommable`),
-  ADD KEY `num_chambre` (`num_chambre`);
-
---
--- Indexes for table `facture`
---
-ALTER TABLE `facture`
-  ADD PRIMARY KEY (`num_facture`),
-  ADD KEY `cin` (`cin`),
-  ADD KEY `num_reservation` (`num_reservation`),
-  ADD KEY `cin_receptionniste` (`cin_receptionniste`);
-
---
--- Indexes for table `receptionniste`
---
-ALTER TABLE `receptionniste`
-  ADD PRIMARY KEY (`login`,`cin`);
-
---
--- Indexes for table `reservation`
---
-ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`num_reservation`),
-  ADD KEY `num_chambre` (`num_chambre`),
-  ADD KEY `cin` (`cin`);
 
 --
 -- Constraints for dumped tables
@@ -243,15 +217,15 @@ ALTER TABLE `consommation`
 -- Constraints for table `facture`
 --
 ALTER TABLE `facture`
-  ADD CONSTRAINT `facture_ibfk_1` FOREIGN KEY (`cin`) REFERENCES `client` (`cin`),
-  ADD CONSTRAINT `facture_ibfk_2` FOREIGN KEY (`num_reservation`) REFERENCES `reservation` (`num_reservation`);
+  ADD CONSTRAINT `facture_ibfk_1` FOREIGN KEY (`num_reservation`) REFERENCES `reservation` (`num_reservation`),
+  ADD CONSTRAINT `facture_ibfk_2` FOREIGN KEY (`cin`) REFERENCES `client` (`cin`);
 
 --
 -- Constraints for table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`num_chambre`) REFERENCES `chambre` (`num_chambre`),
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`cin`) REFERENCES `client` (`cin`);
+  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`cin`) REFERENCES `client` (`cin`),
+  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`num_chambre`) REFERENCES `chambre` (`num_chambre`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
