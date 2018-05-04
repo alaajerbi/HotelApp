@@ -42,7 +42,7 @@ else {
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>ID </th> <th> Name</th> <th> Family_name</th>  <th> check_in </th> <th> check_out </th> <th>Num_Room </th>
+                    <th>ID  </th> <th> Name</th> <th> Family_name</th>  <th> check_in </th> <th> check_out </th> <th>Num_Room </th>
                 </tr>
                 </thead>
                 <tbody>
