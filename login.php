@@ -68,7 +68,7 @@
 
                 }
 
-                else if(data=='ichraf')
+                else if(data=='ok')
                 {
                     swal({
                             title: "Wrong!",
