@@ -1,7 +1,7 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <span class="text-muted">&copy; 2018; All rights are reserved.</span>
+        <span class="text-muted">&copy 2018 All rights are reserved.</span>
     </div>
 </footer>
 </body>

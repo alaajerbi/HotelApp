@@ -1,9 +1,8 @@
 <?php
-
     //Check if the user is not logged in and redirect him to the login page.
-    if (!isset($_SESSION['id'])) {
+    /*if (!isset($_SESSION['id'])) {
         header('Location: login.php');
-    }
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,7 @@
     <meta charset="UTF-8">
     <title><?php echo $pageTitle; ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 
    </head>
 <body>
