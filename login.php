@@ -53,14 +53,14 @@
         var ps=document.getElementById('motdepasse').value;
         $.ajax({
             type: "POST",
-            url: "authentifiertest.php",
+            url: "login_test.php",
             data: {name:nom,password:ps},
             success: function(data) {
 
                 if(data=='existe')
                 {
 
-                    window.location.href = "//stackoverflow.com";
+                    window.location.href = "dashboard.php";
 
                 }
 
