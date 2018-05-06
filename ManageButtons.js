@@ -1,3 +1,7 @@
+// JS FILE TO MANAGE CLIENT LIST BUTTONS AND KEY PRESS 
+
+
+
 var elementSearch= document.getElementById('recherche');
 var elementDebut=document.getElementById('debut');
 var elementRefresh=document.getElementById('refresh');
