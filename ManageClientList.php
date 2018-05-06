@@ -6,6 +6,7 @@
  * Time: 19:33
  */
 
+// PAGE QUI CONTIENT LA LISTE DES CLIENTS , DES BOUTONS POUR GERER LA BARRE DES RECHERCHERS ET LES INFORMATIONS DES CLIENTS
 try{
     $db=new PDO('mysql:host=localhost;dbName=HotelDB','root','',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 } catch(Exception $e)
