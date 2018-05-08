@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: micro
- * Date: 12/04/2018
- * Time: 21:47
- */
+
 $pageTitle = "Hotel App - Reservation";
 $pageId='reservations';
 include('inc/header.php');?>
@@ -142,7 +137,7 @@ include('inc/header.php');?>
     </div>
 </div>
 
-<div  id="summary" >
+<div  id="summary" style="display=none" >
     <h1 align="center">Summary of this reservation</h1><h3>Personal Information </h3>
     <label>First Name :</label><span id="nom">" "</span><br>
     <label>Last Name :</label><span id="prenom">" "</span><br>
