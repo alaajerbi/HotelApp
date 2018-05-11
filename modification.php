@@ -1,15 +1,14 @@
 <?php 
-//$num=$_GET["num"];
+$num=$_GET["num"];
 require 'connect.php';
 $db=connect();
-$num = 85;
 $rep=$db->prepare("Select num_chambre from chambre");
 $rep->execute();
 
 ?>
 <html lang="fr">
 	<head>
-		<title>Modification d'une reservation</title>
+		<title>Modification de la reservation n°<?php echo $num?></title>
 		<meta name="author" content="Wassim" />
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/mod_style1.css" />
@@ -24,15 +23,13 @@ $rep->execute();
                <span class="right"><a href="../logout.php"><span>Deconnecter</span></a></span>
 			</div>
 			<header class="header"><br>
-				<h1>Modification d'une Reservation</h1>	
+				<h1>Modification de la reservation n°<?php echo $num?></h1>	
 			</header>
 			<div class="wrapper"><br>
                 
                 <div class="form">
                 	<form method="POST" onsubmit="return verif();" action="mod.php?num_res=<?php echo $num?>">
-                    <p>					
-						<input type="text" name="num_res" disabled="disabled" value="Reservation n°<?php echo $num;?>" placeholder="Numero Reservation">
-                    </p>
+
                     <p>
 					
                     <select name="num_ch" required>
