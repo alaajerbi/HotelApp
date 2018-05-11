@@ -1,9 +1,10 @@
 <?php
-include_once ("header.php") ;
-require_once ("conn.php") ;
+include_once ("inc/header.php") ;
+require 'connect.php';
+$db=connect();
 
-$req= "SELECT * FROM reservations " ;
-$ps= $pdo->prepare($req) ;
+$req= "SELECT * FROM reservation" ;
+$ps= $db->prepare($req) ;
 $ps->execute() ;
 ?>
 
@@ -48,7 +49,7 @@ $ps->execute() ;
 
                 <?php   while($re=$ps->fetch()) {  ?>
                     <tr>
-                        <td> <?php echo ($re['id']) ?></td>
+                        <td> <?php echo ($re['num_reservation']) ?></td>
                         <td> <?php echo ($re['nom']) ?></td>
                         <td> <?php echo ($re['prenom']) ?></td>
                         <td> <?php echo ($re['check_in']) ?></td>
@@ -57,11 +58,12 @@ $ps->execute() ;
 
 
                         <td> <a href="#" class="btn btn-primary btn-success glyphicon glyphicon-cutlery"><span class="glyphicon glyphicon-glass"></span> consom</a> </td>
-                        <td>   <a href="#" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-home"></span> check_out</a> </td>
+                        <td> <a href="modification.php?num=<?php echo $re['num_reservation']; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> modify</a> </td>
+						<td>   <a href="#" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-home"></span> check_out</a> </td>
                         <td> <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-trash"></span> delete</a> </td>
                         <td>  <button type="button" class="btn btn-primary btn-info"><span class="glyphicon glyphicon-map-marker" data-toggle="modal" data-target="#myModal<?php echo ($re['id']) ?>">more info ! </button>
 
-                            ///// <div class="modal fade" id="myModal<?php echo ($re['id']) ?>" role="dialog">
+                            <div class="modal fade" id="myModal<?php echo ($re['id']) ?>" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -119,3 +121,4 @@ $ps->execute() ;
 
 </body>
 </html>
+
