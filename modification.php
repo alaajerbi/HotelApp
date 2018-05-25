@@ -1,5 +1,10 @@
-<?php 
-$num=$_GET["num"];
+<?php
+session_start();
+if (!isset($_POST['name'])) { 
+	header('Location: login.php'); //redirecte l'utilisateur s'il n'est pas connecté
+}
+
+$num=$_GET["num"]; // le numéro de la chambre est envoyé dans le lien
 require 'connect.php';
 $db=connect();
 $rep=$db->prepare("Select num_chambre from chambre");
@@ -9,7 +14,7 @@ $rep->execute();
 <html lang="fr">
 	<head>
 		<title>Modification de la reservation n°<?php echo $num?></title>
-		<meta name="author" content="Wassim" />
+		<meta name="author" content="Wassim Mohsni GL2" />
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/mod_style1.css" />
       	<link rel="stylesheet" type="text/css" href="css/mod_style2.css" />
