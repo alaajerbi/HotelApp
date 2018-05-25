@@ -7,8 +7,8 @@ if (!isset($_POST['name'])) {
 $num=$_GET["num"]; // le numéro de la chambre est envoyé dans le lien
 require 'connect.php';
 $db=connect();
-$rep=$db->prepare("Select num_chambre from chambre");
-$rep->execute();
+$req=$db->prepare("Select num_chambre from chambre");
+$rep=$req->execute();
 
 ?>
 <html lang="fr">
